@@ -1,3 +1,26 @@
+### About this fork
+This isn't official version.
+
+Official version: [https://github.com/Nan1t/NanoLimbo](https://github.com/Nan1t/NanoLimbo)
+
+I fork this to publish it to my maven repo.
+
+```
+https://repo.inker.bot/repository/maven-releases/
+```
+
+```xml
+<dependency>
+  <groupId>bot.inker.nanolimbo</groupId>
+  <artifactId>NanoLimbo</artifactId>
+  <version>1.5</version>
+</dependency>
+```
+
+```groovy
+implementation("bot.inker.nanolimbo:NanoLimbo:1.5")
+```
+
 ## NanoLimbo
 
 This is lightweight minecraft limbo server, written on Java with Netty.
