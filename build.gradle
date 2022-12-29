@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'maven-publish'
 }
 
-group 'ru.nanit'
+group 'bot.inker.nanolimbo'
 version '1.5'
 
 compileJava {
@@ -41,4 +42,47 @@ shadowJar {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            url = 'https://repo.inker.bot/repository/maven-releases/'
+            credentials {
+                username System.getenv('NEXUS_USERNAME')
+                password System.getenv('NEXUS_PASSWORD')
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            pom {
+                name = 'NanoLimbo'
+                description = 'A lightweight minecraft limbo server'
+                url = 'https://github.com/Nan1t/NanoLimbo'
+                properties = [
+                    publishBy: "Inkerbot"
+                ]
+                licenses {
+                    license {
+                        name = 'GNU General Public License v3.0'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.html'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'nan1t'
+                        name = 'Nan1t'
+                        email = 'imnanit@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/Nan1t/NanoLimbo.git'
+                    developerConnection = 'scm:git:ssh://git@github.com:Nan1t/NanoLimbo.git'
+                    url = 'https://github.com/Nan1t/NanoLimbo'
+                }
+            }
+            from components.java
+        }
+    }
 }
