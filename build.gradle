@@ -44,6 +44,11 @@ test {
     useJUnitPlatform()
 }
 
+// inkerbot start
+java{
+    withSourcesJar()
+}
+
 publishing {
     repositories {
         maven {
@@ -86,3 +91,4 @@ publishing {
         }
     }
 }
+// inkerbot end
